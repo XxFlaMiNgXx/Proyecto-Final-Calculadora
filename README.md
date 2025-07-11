@@ -62,6 +62,15 @@ Transforma el Parse Tree en **código LLVM IR**.
   - Llamadas a `@printf` para imprimir.
 - **Estado actual**: El archivo `main.cpp` solo escribe un bloque fijo de LLVM, sin procesar el Parse Tree.
 
-##Diagrama de flujo
+## Diagrama de flujo
 <img width="739" height="402" alt="image" src="https://github.com/user-attachments/assets/ced30d66-1827-4501-971e-0598dcf06250" />
+
+# Resultados de la validacion
+<img width="1280" height="247" alt="image" src="https://github.com/user-attachments/assets/99fe1eaf-1eee-4ae7-981d-8c40b687abec" />
+---
+# Conclusiones
+El compilador CalcScript ha logrado establecer una base sólida en cuanto a su **frontend**, utilizando ANTLR4 para analizar correctamente el código fuente, validar su sintaxis y construir un árbol de análisis sintáctico (Parse Tree). Esta parte demuestra un avance importante y una correcta implementación de la primera etapa del proceso de compilación.
+Sin embargo, el proyecto presenta una **limitación crítica en su backend**: la **generación de código aún no está implementada**. Actualmente, el compilador ignora el Parse Tree y genera un archivo `output.ll` con un bloque de código LLVM estático, sin relación con el contenido real de `input.calc`. Esto impide que el compilador cumpla con su propósito fundamental: traducir código fuente en CalcScript a código LLVM IR personalizado y funcional.
+En resumen, el compilador tiene la capacidad de **entender el lenguaje**, pero aún **no sabe traducirlo**. El siguiente paso esencial es implementar la clase visitante que recorra el árbol sintáctico y genere dinámicamente instrucciones LLVM equivalentes, permitiendo así que el compilador produzca resultados reales y útiles a partir del código fuente proporcionado por el usuario.
+
 
